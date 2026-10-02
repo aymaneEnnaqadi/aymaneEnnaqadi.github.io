@@ -1,2 +1,7 @@
-# aymaneEnnaqadi.github.io
-Personal portfolio — AI, automation, and software solutions by Aymane Ennaqadi.
+# Aymane Ennaqadi — Portfolio
+
+AI, automation, and software solutions.
+
+Static portfolio for GitHub Pages. Publish the main branch from the repository root.
+
+Website: https://aymaneennaqadi.github.io/
