@@ -56,7 +56,9 @@ function applyLanguage(language) {
   document.querySelector('label[for="language-select"]').textContent = ui.language;
   if (activeProject && dialog.open) renderProject(activeProject);
   updateClock();
+  document.dispatchEvent(new CustomEvent('portfolio-language-change', {detail: currentLanguage}));
 }
+
 languageSelect.addEventListener('change', () => {
   applyLanguage(languageSelect.value);
   try { localStorage.setItem('portfolio-language', currentLanguage); } catch {}
@@ -78,11 +80,3 @@ dialog.addEventListener('click', event => {
 });
 setInterval(updateClock, 60000);
 document.getElementById('year').textContent = new Date().getFullYear();
-if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-  }), { threshold: .08 });
-  document.querySelectorAll('.project,.service-row,.about-content,.work-note').forEach(element => {
-    element.classList.add('reveal'); observer.observe(element);
-  });
-}
